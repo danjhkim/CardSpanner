@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
 	Grid,
 	Card,
@@ -16,20 +17,18 @@ import {
 	TextField,
 } from '@mui/material';
 import '../styles/Crypto.css';
-
-const API_URL = 'https://jsonplaceholder.typicode.com/posts';
+import { fetchCoins } from '../slices/coinList';
 
 function App() {
-	const [posts, setPosts] = useState([]);
 	const [page, setPage] = useState(1);
 	const [displayMode, setDisplayMode] = useState('card');
 	const [itemsPerPage, setItemsPerPage] = useState(4);
+	const coins = useSelector(state => state.coinReducer.coins);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-		fetch(API_URL)
-			.then(response => response.json())
-			.then(data => setPosts(data));
-	}, []);
+		dispatch(fetchCoins());
+	}, [dispatch]);
 
 	const handlePageChange = (event, value) => {
 		setPage(value);
@@ -53,34 +52,37 @@ function App() {
 
 	const visiblePosts =
 		displayMode === 'card'
-			? posts.slice((page - 1) * itemsPerPage, page * itemsPerPage)
-			: posts;
+			? coins.slice((page - 1) * itemsPerPage, page * itemsPerPage)
+			: coins;
 
 	const visibleRows =
 		displayMode === 'table'
 			? visiblePosts
 					.slice((page - 1) * itemsPerPage, page * itemsPerPage)
-					.map(post => (
-						<TableRow key={post.id}>
-							<TableCell>{post.title}dfsdfds</TableCell>
-							<TableCell>{post.body}</TableCell>
+					.map(coin => (
+						<TableRow key={coin.id}>
+							<TableCell>{coin.title}dfsdfds</TableCell>
+							<TableCell>{coin.body}</TableCell>
 						</TableRow>
 					))
-			: visiblePosts.map(post => (
-					<Grid item xs={12} md={3} key={post.id}>
+			: visiblePosts.map(coin => (
+					<Grid item xs={12} md={3} key={coin.id}>
 						<Card>
 							<CardContent>
 								<Typography variant='h5' sx={{ mb: 4 }}>
-									{post.title}
+									{coin.title}
 								</Typography>
 								<Typography variant='body1' sx={{ mb: 1 }}>
-									Body: {post.body}
+									<h5 className='subtitle'>Brand</h5>{' '}
+									{coin.body}
 								</Typography>
 								<Typography variant='body1' sx={{ mb: 1 }}>
-									Body: {post.body}
+									<h5 className='subtitle'>Info</h5>{' '}
+									{coin.body}
 								</Typography>
 								<Typography variant='body1' sx={{ mb: 1 }}>
-									Body: {post.body}
+									<h5 className='subtitle'>Contact</h5>{' '}
+									{coin.body}
 								</Typography>
 							</CardContent>
 						</Card>
@@ -104,36 +106,39 @@ function App() {
 						</Table>
 					</TableContainer>
 				)}
-
-				<Grid item xs={12}>
-					{displayMode === 'table' && (
-						<TextField
-							label='Items per page'
-							variant='outlined'
-							type='number'
-							value={itemsPerPage}
-							onChange={handleItemsPerPageChange}
+				<div className='botNav'>
+					<Grid item xs={12}>
+						{displayMode === 'table' && (
+							<TextField
+								sx={{ ml: 2 }}
+								label='Items per page'
+								variant='outlined'
+								type='number'
+								value={itemsPerPage}
+								onChange={handleItemsPerPageChange}
+							/>
+						)}
+						<Pagination
+							className='pagination'
+							sx={{ mt: 2 }}
+							count={Math.ceil(coins.length / itemsPerPage)}
+							page={page}
+							onChange={handlePageChange}
+							color='primary'
+							size='medium'
 						/>
-					)}
-					<Pagination
-						count={Math.ceil(posts.length / itemsPerPage)}
-						page={page}
-						onChange={handlePageChange}
-						color='primary'
-						size='large'
-					/>
-				</Grid>
-				<Grid item xs={12}>
-					<Button
-						sx={{ mr: 4 }}
-						variant='contained'
-						color='primary'
-						onClick={handleToggleDisplayMode}>
-						{displayMode === 'card'
-							? 'Switch to Table'
-							: 'Switch to Card'}
-					</Button>
-				</Grid>
+					</Grid>
+					<Grid item xs={12} className='button' sx={{ mt: 2 }}>
+						<Button
+							variant='contained'
+							color='primary'
+							onClick={handleToggleDisplayMode}>
+							{displayMode === 'card'
+								? 'Switch to Table'
+								: 'Switch to Card'}
+						</Button>
+					</Grid>
+				</div>
 			</Grid>
 		</div>
 	);

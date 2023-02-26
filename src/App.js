@@ -1,12 +1,12 @@
 import './styles/App.css';
 import Crypto from './components/Crypto';
 
-function App() {
+const App = () => {
 	return (
 		<div className='App'>
 			<Crypto />
 		</div>
 	);
-}
+};
 
 export default App;

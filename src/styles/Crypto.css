@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .MuiCard-root {
@@ -11,4 +12,25 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.botNav {
+    margin: 1rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    align-self: flex-end;
+    width: 100%;
+
+}
+
+.button {
+    text-align: center !important;
+}
+
+.subtitle {
+    margin: 1em 0;
+    font-weight: 800;
 }
