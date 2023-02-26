@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 import Crypto from './components/Crypto';
 
 function App() {
