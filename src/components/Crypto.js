@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Card, CardContent, Typography } from '@mui/material';
+import { Grid, Card, CardContent, Typography, Button } from '@mui/material';
 import '../styles/Crypto.css';
 
 //temp API
@@ -9,7 +9,13 @@ const Crypto = () => {
 	const [posts, setPosts] = useState([]);
 	const [startIndex, setStartIndex] = useState(0);
 
-	console.log(posts);
+	const handleNext = () => {
+		setStartIndex(startIndex + 4);
+	};
+
+	const handlePrev = () => {
+		setStartIndex(Math.max(0, startIndex - 4));
+	};
 
 	const visiblePosts = posts.slice(startIndex, startIndex + 4);
 
@@ -42,6 +48,23 @@ const Crypto = () => {
 						</Card>
 					</Grid>
 				))}
+				<Grid item xs={12}>
+					<Button
+						sx={{ mr: 4 }}
+						variant='contained'
+						color='success'
+						onClick={handlePrev}
+						disabled={startIndex === 0}>
+						Prev
+					</Button>
+					<Button
+						variant='contained'
+						color='success'
+						onClick={handleNext}
+						disabled={startIndex + 4 >= posts.length}>
+						Next
+					</Button>
+				</Grid>
 			</Grid>
 		</div>
 	);
