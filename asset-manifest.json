@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/RightDrive-Dev-Test/static/css/main.3f3e294a.css",
-    "main.js": "/RightDrive-Dev-Test/static/js/main.13b2ac97.js",
+    "main.css": "/RightDrive-Dev-Test/static/css/main.7108d064.css",
+    "main.js": "/RightDrive-Dev-Test/static/js/main.17f5ce7a.js",
     "index.html": "/RightDrive-Dev-Test/index.html",
-    "main.3f3e294a.css.map": "/RightDrive-Dev-Test/static/css/main.3f3e294a.css.map",
-    "main.13b2ac97.js.map": "/RightDrive-Dev-Test/static/js/main.13b2ac97.js.map"
+    "main.7108d064.css.map": "/RightDrive-Dev-Test/static/css/main.7108d064.css.map",
+    "main.17f5ce7a.js.map": "/RightDrive-Dev-Test/static/js/main.17f5ce7a.js.map"
   },
   "entrypoints": [
-    "static/css/main.3f3e294a.css",
-    "static/js/main.13b2ac97.js"
+    "static/css/main.7108d064.css",
+    "static/js/main.17f5ce7a.js"
   ]
 }
