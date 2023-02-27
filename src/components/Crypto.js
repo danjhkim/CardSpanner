@@ -68,7 +68,7 @@ const Crypto = () => {
 			: visiblePosts.map(coin => (
 					<Grid item xs={12} md={3} key={coin.id}>
 						<Card>
-							<CardContent>
+							<CardContent className='card'>
 								<Typography variant='h5' sx={{ mb: 4 }}>
 									{coin.title}
 								</Typography>
@@ -91,10 +91,12 @@ const Crypto = () => {
 
 	return (
 		<div className='cryptoBlock' data-testid='Crypto-test'>
-			<Grid container spacing={2}>
+			<Grid container spacing={2} className='table-grid'>
 				{displayMode === 'card' && visibleRows}
 				{displayMode === 'table' && (
-					<TableContainer component={Paper}>
+					<TableContainer
+						component={Paper}
+						className='table-container'>
 						<Table>
 							<TableHead>
 								<TableRow>
