@@ -112,6 +112,7 @@ const Crypto = () => {
 					<Grid item xs={12}>
 						{displayMode === 'table' && (
 							<TextField
+								className='textFieldPage'
 								sx={{ ml: 2 }}
 								label='Items per page'
 								variant='outlined'

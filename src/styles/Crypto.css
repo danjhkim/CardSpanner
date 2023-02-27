@@ -1,13 +1,11 @@
 .cryptoBlock {
     width: 100%;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 .MuiCard-root {
     min-height: 600px;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -15,7 +13,6 @@
 }
 
 .card {
-    height: 100% !important;
     display: flex !important;
     flex-direction: column;
     justify-content: space-evenly;
@@ -23,7 +20,7 @@
 
 .table-grid {
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
 }
@@ -39,6 +36,10 @@
     align-items: flex-end;
     flex-direction: column;
     align-self: flex-end;
+}
+
+.textFieldPage {
+    display: flex !important;
 }
 
 .button {
