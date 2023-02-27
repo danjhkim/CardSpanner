@@ -61,7 +61,7 @@ function App() {
 					.slice((page - 1) * itemsPerPage, page * itemsPerPage)
 					.map(coin => (
 						<TableRow key={coin.id}>
-							<TableCell>{coin.title}dfsdfds</TableCell>
+							<TableCell>{coin.title}</TableCell>
 							<TableCell>{coin.body}</TableCell>
 						</TableRow>
 					))
@@ -73,15 +73,15 @@ function App() {
 									{coin.title}
 								</Typography>
 								<Typography variant='body1' sx={{ mb: 1 }}>
-									<h5 className='subtitle'>Brand</h5>{' '}
+									<span className='subtitle'>Brand:</span>{' '}
 									{coin.body}
 								</Typography>
 								<Typography variant='body1' sx={{ mb: 1 }}>
-									<h5 className='subtitle'>Info</h5>{' '}
+									<span className='subtitle'>Info:</span>{' '}
 									{coin.body}
 								</Typography>
 								<Typography variant='body1' sx={{ mb: 1 }}>
-									<h5 className='subtitle'>Contact</h5>{' '}
+									<span className='subtitle'>Contact:</span>{' '}
 									{coin.body}
 								</Typography>
 							</CardContent>
@@ -90,7 +90,7 @@ function App() {
 			  ));
 
 	return (
-		<div className='cryptoBlock'>
+		<div className='cryptoBlock' data-testid='Crypto-test'>
 			<Grid container spacing={2}>
 				{displayMode === 'card' && visibleRows}
 				{displayMode === 'table' && (
