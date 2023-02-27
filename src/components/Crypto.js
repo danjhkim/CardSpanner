@@ -19,7 +19,7 @@ import {
 import '../styles/Crypto.css';
 import { fetchCoins } from '../slices/coinList';
 
-function App() {
+const Crypto = () => {
 	const [page, setPage] = useState(1);
 	const [displayMode, setDisplayMode] = useState('card');
 	const [itemsPerPage, setItemsPerPage] = useState(4);
@@ -142,6 +142,6 @@ function App() {
 			</Grid>
 		</div>
 	);
-}
+};
 
-export default App;
+export default Crypto;
